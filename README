@@ -1,0 +1,12 @@
+In kreceiver si ksender am definit structurile MK pentru MINI-KERMIT si dataSI pentru campul data din Send Init.
+dataSI are cele 11 campuri cu lungimea de un byte fiecare(char).
+In MK campurile SOH,LEN,SEQ,TYPE,MARK de tipul char, CHECK unsigned short iar DATA un vector char de lungime 250.
+In ksender functia send_si va creea pachetul Send Init.Aici dupa ce am creea cele 11 campuri din dataSI copiem datele in DATA.Suma de control pentru check o calculam cu crc16_ccitt.In final returnam pachetul Send Init.
+Functia send_sh imi va creea pachetul File Header iar numele fisierului va fi copiat in campul DATA.
+Initial vom trimite pachetul Send Init la reciever.
+Recieverul receptioneaza mesajul si ii trimite raspuns senderului ca a primit mesajul.
+Pentru fiecare fisier trimis vom folosi un for de la 1 la argc.
+Vom creea pachetul File Header, il trimitem la receiver si asteptam raspunsul.
+Vom deschide fisierul si citim datele din fisier, copiem datele in DATA si trimitem la receiver mesajul.
+La fel vom proceda si pentru pachetele Z si B.
+
